@@ -41,12 +41,16 @@ if (!Array.prototype.forEach)
 
 // ======================= actual game =======================
 
+
+var id = '';
+
 $(document).ready(function() {
+	
 	$('#login').bind('submit',function(e) {
 		var nick = $('#nick').dom[0].value;
 		if (!nick) window.alert('Please enter your nickname!');
 		else {
-			$.post('/login/'+nick, function() { alert('hi'); });
+			$.post('/login/'+nick, function(data) { alert(data); data = JSON.parse(data); id = data.session; getQuestion(); });
 			e.preventDefault();
 		}
 		return false;
@@ -81,3 +85,10 @@ function render(data) {
 	});
 	combatants.html(html);
 };
+
+function getQuestion(id) {
+	$.post('/question/'+id, function(data) {
+		data = JSON.parse(data);
+		render(data);
+	});
+}
