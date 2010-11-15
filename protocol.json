@@ -1,6 +1,21 @@
-'GET /login':
+// entry point
+'GET /': STATIC HTML
+
+// after you choose nickname, displays countdown to next question overlay screen
+'POST /login': { nick: 'somebody'; }
+{ session: "0e2e293848433f4cf18c8317a7290466" }
+
+// answer selected
+'POST /answer': { session: "0e2e293848433f4cf18c8317a7290466", token: "8433f4cf18c831", answer: 4 }
 {
-	user: "0e2e293848433f4cf18c8317a7290466",
+	combatants: [
+		...
+	]
+}
+
+// question timeout, new question
+'POST /question': { session: " 0e2e293848433f4cf18c8317a7290466" }
+{
 	data: {
 		question: "What is the meaning of life, universe & everything?",
 		token: "8433f4cf18c831",
@@ -8,26 +23,6 @@
 	}
 	ttl: 4500,
 	combatants: [
-		{ name: 'Honza', (icon: 'http://img.twitter.com/9046.png')? }
-	]
-}
-
-'POST /answer': { user: "0e2e293848433f4cf18c8317a7290466", token: "8433f4cf18c831", answer: 4 }
-{
-	combatants: [
-		...
-	]
-}
-
-'GET /refresh':
-{
-	data: {
-		question: "What is the meaning of life, universe & everything?",
-		token: "8433f4cf18c831",
-		answers: [ "blah", "doh", "42", "haha" ]
-	}
-	ttl: 4500,
-	combatants: [
-		...
+		{ name: 'Honza', icon: 'http://img.twitter.com/9046.png', score: 12345 }
 	]
 }
