@@ -16,11 +16,9 @@
 // question timeout, new question
 'POST /question': { session: " 0e2e293848433f4cf18c8317a7290466" }
 {
-	data: {
-		question: "What is the meaning of life, universe & everything?",
-		token: "8433f4cf18c831",
-		answers: [ "blah", "doh", "42", "haha" ]
-	}
+       	question: "What is the meaning of life, universe & everything?",
+       	token: "8433f4cf18c831",
+       	answers: [ "blah", "doh", "42", "haha" ]
 	ttl: 4500,
 	combatants: [
 		{ name: 'Honza', icon: 'http://img.twitter.com/9046.png', score: 12345 }
