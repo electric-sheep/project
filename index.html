@@ -4,48 +4,66 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Live question</title>
 <style type="text/css">
-.body {
+html { height: 100%; }
+body {
 	margin: 0px;
 	padding: 0px;
+	background-color: #CCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	max-width: 480px;
+	margin: 0px auto;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCC), color-stop(100%,#999)); /* webkit */
+	height: 100%;
 }
 p {
 	margin: 0px;
 	padding: 0px;
 }
 #telo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100.1%;
 }
 #top {
-	line-height: 30px;
-	background-color: #900;
+	background-color: #666;
 	font-size: 120%;
 	color: #FFF;
+	height: 32px;
 	padding-top: 4px;
 	padding-right: 4px;
 	padding-bottom: 4px;
 	padding-left: 10px;
+	line-height: 32px;
 }
-#content {
+#question {
 	padding: 4px;
+	display: none;
 }
-#content .question-box {
-	padding: 4px;
+#question .question-box {
 }
-#content ul {
+#question ul {
 	padding: 0px;
 	list-style-type: none;
-	margin: 0px;
+	background-color: #FFF;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
 }
-#content ul li {
+#question ul li {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
 }
-#content ul li a {
+#question ul li a {
 	display: block;
 	text-decoration: none;
 	color: #003;
 	padding: 4px;
 }
-#content ul li a:hover {
+#question ul li a:hover , #question ul li a:active{
 	color: #FFF;
-	background-color: #003;
+	background-color: #669933;
 }
 #pata {
 	height: 30px;
@@ -53,40 +71,77 @@ p {
 }
 #input-nick {
 	display: block;
+	margin-right: 10px;
+	margin-left: 10px;
 }
-#content {
-	display: none;
+#login #nick {
+	width: 99%;
+	margin-top: 10px;
+	line-height: 1.5em;
+	padding-left: 4px;
+}
+
+
+#login input {
+	height: 40px;
+	width: 100%;
+	margin-bottom: 10px;
+	}
+	
+	.imput-nick {
+	height: 40px;
+	background-color: #FF9;
+	font-size: 15px;
+}
+	.button-login {
+	background-color: #06F;
+	font-size: 15px;
+	color: #FFF;
+	-webkit-border-radius: 6px;
+	-webkit-box-shadow: 0px 2px 5px rgba(20,20,20,0.5);
+	border: 0px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6CF), color-stop(100%,#06C)); /* webkit */
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+	
+	
+.question {
+	font-size: 12px;
+	color: #693;
+}
+.quest-text {
+	font-size: 18px;
+	color: #000;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 </style>
 </head>
 
 <body>
 <div id="telo">
-<div id="top"> <!--top - hlava bude vzdy-->
-<p>NICK ...</p>
-</div>
 <div id="input-nick"> <!-- div pro formular-->
-<form action="" method="get">
-<p> Name (nick) </p>
-<p>
-  <input name="Nick" type="text" value="nick" maxlength="40">
-</p>
-<p>
-  <input name="ready" type="submit" value="ready">
-</p>
+<form action="" method="get" id="login">
+<input class="imput-nick" name="Nick" type="text" value="" id="nick" placeholder="your nickname" maxlength="40">
+<!--<br>
+--><input class="button-login" name="ready" type="submit" value="Enter test">
 </form>
 </div>
 
-<div id="content">
+<div id="question">
+<span id="counter"></span> seconds
 <div class="question-box">
-<strong>Question:  Lorem Ipsum is simply dummy text of the printing and typesetting industry. </strong>
-</div>
+ <p class="question">Question:</p>  
+ <p class="quest-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>  
+ </div>
+ <p class="question">Answers: </p>
 <ul>
   <li><a href="#">a. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </a></li>
   <li><a href="#">b. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to</a></li>
   <li><a href="#">3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a>
   </li>
 </ul>
+<div class="combatants"></div>
 </div>
 </div> <!-- telo - zmena pro velikost displ-->
 </body>

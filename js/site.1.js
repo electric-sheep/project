@@ -41,43 +41,90 @@ if (!Array.prototype.forEach)
 
 // ======================= actual game =======================
 
+
+var id = '';
+var qToken = '';
+
+var login = $('#login');
+var question = $('#question');
+
+var header = $('#question strong');
+var answers = $('#question ul');
+var combatants = $('#question .combatants');
+var counter = $('#counter');
+
 $(document).ready(function() {
-	$('#login').bind('submit',function(e) {
+	
+	login.bind('submit',function(e) {
 		var nick = $('#nick').dom[0].value;
 		if (!nick) window.alert('Please enter your nickname!');
 		else {
-			$.post('/login/'+nick, function() { alert('hi'); });
+			$.post('/login/'+nick, function(data) { data = JSON.parse(data); id = data.session; getQuestion(); });
 			e.preventDefault();
 		}
 		return false;
 	});
-	render(data);
+    
+    answers.delegate('li a', 'click', function(target, e) {
+        var token = target.getAttribute('data-question');
+        var answer = target.getAttribute('data-offset');
+        $.post('/answer/'+id+'/'+token+'/'+answer, function(data) {
+            data = JSON.parse(data);
+            renderCombatants(data);
+        });
+        e.preventDefault();
+        return false;
+    });
 });
 
-var data = {
-	question: "What is the meaning of life, universe & everything?",
-	token: "8433f4cf18c831",
-	answers: [ "blah", "doh", "42", "haha" ],
-	combatants: [
-		{ name: 'Honza', icon: 'http://img.twitter.com/9046.png' }
-	]
-};
-
-
-var header = $('#question');
-var answers = $('#answers');
-var combatants = $('#combatants');
-
-function render(data) {
+function renderQuestion(data) {
 	header.html(data.question);
 	var html='';
 	data.answers.forEach(function(item, offset) {
-		html+='<li>'+offset+': '+item+'</li>';
+		html+='<li><a href="#" data-offset="'+offset+'" data-question="'+data.token+'">'+item+'</a></li>';
 	});
 	answers.html(html);
+    renderCombatants(data.combatants);
+};
+
+function renderCombatants(data) {
 	html='';
-	data.combatants.forEach(function(item, offset) {
+	data.forEach(function(item, offset) {
 		html+='<li>'+item.name+'</li>';
 	});
 	combatants.html(html);
-};
+}
+
+function renderTicker(ttl) {
+    counter.html(ttl/10);
+}
+
+function getQuestion() {
+	$.post('/question/'+id, function(data) {
+		data = JSON.parse(data);
+        login.hide();
+        
+        if (data.token != qToken) {
+            qToken = data.token;
+
+            var timeout = Math.round(data.ttl / 100);
+            renderTicker(timeout);
+            var ticker = setInterval(function() {
+                timeout = timeout-1;
+                renderTicker(timeout);
+            },'100');
+            var refresh = setTimeout(function() {
+                clearInterval(ticker);
+                getQuestion();
+            }, data.ttl);
+
+
+    		renderQuestion(data);
+            question.show();
+        } else {
+            setTimeout(function() {
+                getQuestion();
+            }, data.ttl);
+        }
+	});
+}
