@@ -1,12 +1,12 @@
 // entry point
-'GET /': STATIC HTML
+GET /: STATIC HTML
 
 // after you choose nickname, displays countdown to next question overlay screen
-'POST /login': { nick: 'somebody'; }
+POST /login/{nick}
 { session: "0e2e293848433f4cf18c8317a7290466" }
 
 // answer selected
-'POST /answer': { session: "0e2e293848433f4cf18c8317a7290466", token: "8433f4cf18c831", answer: 4 }
+POST /answer/{session}/{token}/{answer}
 {
 	combatants: [
 		...
@@ -14,11 +14,11 @@
 }
 
 // question timeout, new question
-'POST /question': { session: " 0e2e293848433f4cf18c8317a7290466" }
+POST /question/{session}
 {
        	question: "What is the meaning of life, universe & everything?",
        	token: "8433f4cf18c831",
-       	answers: [ "blah", "doh", "42", "haha" ]
+       	answers: [ "blah", "doh", "42", "haha" ],
 	ttl: 4500,
 	combatants: [
 		{ name: 'Honza', icon: 'http://img.twitter.com/9046.png', score: 12345 }
