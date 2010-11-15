@@ -53,7 +53,7 @@ var combatants = $('#question .combatants');
 
 $(document).ready(function() {
 	
-	$('#login').bind('submit',function(e) {
+	login.bind('submit',function(e) {
 		var nick = $('#nick').dom[0].value;
 		if (!nick) window.alert('Please enter your nickname!');
 		else {
@@ -62,22 +62,35 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-
+    
+    answers.delegate('li a', 'click', function(target, e) {
+        var token = target.getAttribute('data-question');
+        var answer = target.getAttribute('data-offset');
+        $.post('/answer/'+id+'/'+token+'/'+answer, function(data) {
+            
+        });
+        e.preventDefault();
+        return false;
+    });
 });
 
 function render(data) {
 	header.html(data.question);
 	var html='';
 	data.answers.forEach(function(item, offset) {
-		html+='<li><a href="#">'+offset+': '+item+'</a></li>';
+		html+='<li><a href="#" data-offset="'+offset+'" data-question="'+data.token+'">'+item+'</a></li>';
 	});
 	answers.html(html);
+    renderCombatants(data.combatants);
+};
+
+function renderCombatants(data) {
 	html='';
-	data.combatants.forEach(function(item, offset) {
+	data.forEach(function(item, offset) {
 		html+='<li>'+item.name+'</li>';
 	});
 	combatants.html(html);
-};
+}
 
 function getQuestion() {
 	$.post('/question/'+id, function(data) {

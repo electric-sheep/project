@@ -5,7 +5,8 @@ api_version: 1
 
 # http://code.google.com/appengine/docs/python/config/appconfig.html
 
-default_expiration: 3650d
+# default_expiration: 3650d
+default_expiration: 0
 
 derived_file_type:
   - python_precompiled
