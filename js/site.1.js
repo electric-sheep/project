@@ -44,39 +44,32 @@ if (!Array.prototype.forEach)
 
 var id = '';
 
+var login = $('#login');
+var question = $('#question');
+
+var header = $('#question strong');
+var answers = $('#question ul');
+var combatants = $('#question .combatants');
+
 $(document).ready(function() {
 	
 	$('#login').bind('submit',function(e) {
 		var nick = $('#nick').dom[0].value;
 		if (!nick) window.alert('Please enter your nickname!');
 		else {
-			$.post('/login/'+nick, function(data) { alert(data); data = JSON.parse(data); id = data.session; getQuestion(); });
+			$.post('/login/'+nick, function(data) { data = JSON.parse(data); id = data.session; getQuestion(); });
 			e.preventDefault();
 		}
 		return false;
 	});
-	render(data);
+
 });
-
-var data = {
-	question: "What is the meaning of life, universe & everything?",
-	token: "8433f4cf18c831",
-	answers: [ "blah", "doh", "42", "haha" ],
-	combatants: [
-		{ name: 'Honza', icon: 'http://img.twitter.com/9046.png' }
-	]
-};
-
-
-var header = $('#question');
-var answers = $('#answers');
-var combatants = $('#combatants');
 
 function render(data) {
 	header.html(data.question);
 	var html='';
 	data.answers.forEach(function(item, offset) {
-		html+='<li>'+offset+': '+item+'</li>';
+		html+='<li><a href="#">'+offset+': '+item+'</a></li>';
 	});
 	answers.html(html);
 	html='';
@@ -86,9 +79,11 @@ function render(data) {
 	combatants.html(html);
 };
 
-function getQuestion(id) {
+function getQuestion() {
 	$.post('/question/'+id, function(data) {
 		data = JSON.parse(data);
+        login.hide();
+        question.show();
 		render(data);
 	});
 }
