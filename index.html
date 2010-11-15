@@ -4,38 +4,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Live question</title>
 <style type="text/css">
-.body {
+body {
 	margin: 0px;
 	padding: 0px;
+	background-color: #CCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
 }
 p {
 	margin: 0px;
 	padding: 0px;
 }
 #telo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100.1%;
 }
 #top {
-	line-height: 30px;
-	background-color: #900;
+	background-color: #666;
 	font-size: 120%;
 	color: #FFF;
+	height: 32px;
 	padding-top: 4px;
 	padding-right: 4px;
 	padding-bottom: 4px;
 	padding-left: 10px;
+	line-height: 32px;
 }
 #question {
 	padding: 4px;
 }
 #question .question-box {
-	padding: 4px;
 }
 #question ul {
 	padding: 0px;
 	list-style-type: none;
-	margin: 0px;
+	background-color: #FFF;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
 }
 #question ul li {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
 }
 #question ul li a {
 	display: block;
@@ -43,9 +55,9 @@ p {
 	color: #003;
 	padding: 4px;
 }
-#question ul li a:hover {
+#question ul li a:hover , #question ul li a:active{
 	color: #FFF;
-	background-color: #003;
+	background-color: #669933;
 }
 #pata {
 	height: 30px;
@@ -53,9 +65,50 @@ p {
 }
 #input-nick {
 	display: block;
+	margin-right: 10px;
+	margin-left: 10px;
 }
 #question {
-	display: none;
+	display: block;
+}
+#login #nick {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+
+#login input {
+	height: 40px;
+	width: 100%;
+	margin-bottom: 10px;
+	}
+	
+	.imput-nick {
+	height: 40px;
+	background-color: #FF9;
+	font-size: 15px;
+}
+	.button-login {
+	background-color: #06F;
+	font-size: 15px;
+	color: #FFF;
+	/*-webkit-border-radius: .5em;*/
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+	
+	
+.question {
+	font-size: 12px;
+	color: #693;
+}
+.quest-text {
+	font-size: 18px;
+	color: #000;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 </style>
 </head>
@@ -67,20 +120,18 @@ p {
 </div>
 <div id="input-nick"> <!-- div pro formular-->
 <form action="" method="get" id="login">
-<p>Name (nick)</p>
-<p>
-  <input name="Nick" type="text" value="nick" id="nick" placeholder="nick" maxlength="40">
-</p>
-<p>
-  <input name="ready" type="submit" value="ready">
-</p>
+<input class="imput-nick" name="Nick" type="text" value="Your name" id="nick" placeholder="nick" maxlength="40">
+<!--<br>
+--><input class="button-login" name="ready" type="submit" value="Enter test">
 </form>
 </div>
 
 <div id="question">
 <div class="question-box">
-<strong>Question:  Lorem Ipsum is simply dummy text of the printing and typesetting industry. </strong>
-</div>
+ <p class="question">Question:</p>  
+ <p class="quest-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>  
+ </div>
+ <p class="question">Answers: </p>
 <ul>
   <li><a href="#">a. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </a></li>
   <li><a href="#">b. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to</a></li>
