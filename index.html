@@ -4,12 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Live question</title>
 <style type="text/css">
+html { height: 100%; }
 body {
 	margin: 0px;
 	padding: 0px;
 	background-color: #CCC;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	max-width: 480px;
+	margin: 0px auto;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCC), color-stop(100%,#999)); /* webkit */
+	height: 100%;
 }
 p {
 	margin: 0px;
@@ -32,6 +37,7 @@ p {
 }
 #question {
 	padding: 4px;
+	display: none;
 }
 #question .question-box {
 }
@@ -68,15 +74,11 @@ p {
 	margin-right: 10px;
 	margin-left: 10px;
 }
-#question {
-	display: block;
-}
 #login #nick {
-	width: 100%;
+	width: 99%;
 	margin-top: 10px;
-	margin-bottom: 10px;
-	padding-top: 4px;
-	padding-bottom: 4px;
+	line-height: 1.5em;
+	padding-left: 4px;
 }
 
 
@@ -95,7 +97,10 @@ p {
 	background-color: #06F;
 	font-size: 15px;
 	color: #FFF;
-	/*-webkit-border-radius: .5em;*/
+	-webkit-border-radius: 6px;
+	-webkit-box-shadow: 0px 2px 5px rgba(20,20,20,0.5);
+	border: 0px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6CF), color-stop(100%,#06C)); /* webkit */
 	text-shadow: 0 1px 1px rgba(0,0,0,.3);
 }
 	
@@ -115,12 +120,9 @@ p {
 
 <body>
 <div id="telo">
-<div id="top"> <!--top - hlava bude vzdy-->
-<p>NICK ...</p>
-</div>
 <div id="input-nick"> <!-- div pro formular-->
 <form action="" method="get" id="login">
-<input class="imput-nick" name="Nick" type="text" value="Your name" id="nick" placeholder="nick" maxlength="40">
+<input class="imput-nick" name="Nick" type="text" value="" id="nick" placeholder="your nickname" maxlength="40">
 <!--<br>
 --><input class="button-login" name="ready" type="submit" value="Enter test">
 </form>
