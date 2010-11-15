@@ -1,38 +1,96 @@
-<!doctype html>  
-
+<!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="utf-8">
-
-  <title></title>
-  <meta name="description" content="GUG Hackathon Prague 2010 Team Electric Sheep">
-  <meta name="author" content="Electric Sheep">
-
-  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Live question</title>
+<style type="text/css">
+.body {
+	margin: 0px;
+	padding: 0px;
+}
+p {
+	margin: 0px;
+	padding: 0px;
+}
+#telo {
+}
+#top {
+	line-height: 30px;
+	background-color: #900;
+	font-size: 120%;
+	color: #FFF;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+}
+#content {
+	padding: 4px;
+}
+#content .question-box {
+	padding: 4px;
+}
+#content ul {
+	padding: 0px;
+	list-style-type: none;
+	margin: 0px;
+}
+#content ul li {
+}
+#content ul li a {
+	display: block;
+	text-decoration: none;
+	color: #003;
+	padding: 4px;
+}
+#content ul li a:hover {
+	color: #FFF;
+	background-color: #003;
+}
+#pata {
+	height: 30px;
+	background-color: #900;
+}
+#input-nick {
+	display: block;
+}
+#content {
+	display: none;
+}
+</style>
 </head>
 
 <body>
-	
-  <div id="pages">
-  	<form class="page" id="login">
-  		<label for="nick">Nick: </label><input type="text" name="nick" placeholder="your nickname" id="nick">
-  		<input type="submit" name="login" value="Login" id="loginbtn">
-  	</form>
-  </div>
+<div id="telo">
+<div id="top"> <!--top - hlava bude vzdy-->
+<p>NICK ...</p>
+</div>
+<div id="input-nick"> <!-- div pro formular-->
+<form action="" method="get">
+<p> Name (nick) </p>
+<p>
+  <input name="Nick" type="text" value="nick" maxlength="40">
+</p>
+<p>
+  <input name="ready" type="submit" value="ready">
+</p>
+</form>
+</div>
 
-  <div id="container">
-    <h1 id="question"></h1>
-
-	<ul id="answers"></ul>
-    
-    <div id="combatants"></div>
-    
-    <footer></footer>
-  </div> <!--! end of #container -->
+<div id="content">
+<div class="question-box">
+<strong>Question:  Lorem Ipsum is simply dummy text of the printing and typesetting industry. </strong>
+</div>
+<ul>
+  <li><a href="#">a. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </a></li>
+  <li><a href="#">b. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to</a></li>
+  <li><a href="#">3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a>
+  </li>
+</ul>
+</div>
+</div> <!-- telo - zmena pro velikost displ-->
+</body>
+</html>
 
 
   <!-- Javascript at the bottom for fast page loading -->
