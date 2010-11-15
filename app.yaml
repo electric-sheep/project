@@ -15,7 +15,7 @@ derived_file_type:
 
 builtins:
 # - admin_redirect: on  # @ /_ah/admin ...  redirects local dev console to admin console dashboard
-- appstats: on        # @ /_ah/stats/
+# - appstats: on        # @ /_ah/stats/
 # - remote_api: on      # @ /_ah/remote_api
 - datastore_admin: on # @ /_ah/datastore_admin/
 
@@ -29,6 +29,9 @@ handlers:
 
   - url: /js
     static_dir: js
+
+  - url: /static
+    static_dir: static
 
   - url: /favicon.ico
     upload: etc/favicon.ico
