@@ -1,0 +1,47 @@
+application: electricsheep-1
+version: 1
+runtime: python
+api_version: 1
+
+# http://code.google.com/appengine/docs/python/config/appconfig.html
+
+default_expiration: 3650d
+
+derived_file_type:
+  - python_precompiled
+
+# error_handlers:
+#   - file: error.html
+
+builtins:
+# - admin_redirect: on  # @ /_ah/admin ...  redirects local dev console to admin console dashboard
+- appstats: on        # @ /_ah/stats/
+# - remote_api: on      # @ /_ah/remote_api
+- datastore_admin: on # @ /_ah/datastore_admin/
+
+handlers:
+
+  - url: /img
+    static_dir: img
+
+  - url: /css
+    static_dir: css
+
+  - url: /js
+    static_dir: js
+
+  - url: /favicon.ico
+    upload: etc/favicon.ico
+    static_files: etc/favicon.ico
+    mime_type: image/x-icon
+    expiration: 8h
+    # size 16x16 or 32x32
+    # - https://secure.wikimedia.org/wikipedia/en/wiki/Favicon
+
+  - url: /robots.txt
+    upload: etc/robots.txt
+    static_files: etc/robots.txt
+    expiration: 8h
+
+  - url: /.*
+    script: main.py
