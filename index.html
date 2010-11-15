@@ -39,8 +39,6 @@ p {
 	padding: 4px;
 	display: none;
 }
-#question .question-box {
-}
 #question ul {
 	padding: 0px;
 	list-style-type: none;
@@ -61,7 +59,10 @@ p {
 	color: #003;
 	padding: 4px;
 }
-#question ul li a:hover , #question ul li a:active{
+#question ul li a:hover {
+	background-color: #ddd;
+}
+#question ul li a:active{
 	color: #FFF;
 	background-color: #669933;
 }
@@ -115,6 +116,18 @@ p {
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
+#right {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+#question .question-box {
+	margin-right: 20%;
+}
+#right {
+	width: 20%;
+	position: absolute;
+	right: 0px;
+}
 </style>
 </head>
 
@@ -129,11 +142,9 @@ p {
 </div>
 
 <div id="question">
-<span id="counter"></span> seconds
 <div class="question-box">
  <p class="question">Question:</p>  
  <p class="quest-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>  
- </div>
  <p class="question">Answers: </p>
 <ul>
   <li><a href="#">a. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </a></li>
@@ -141,7 +152,11 @@ p {
   <li><a href="#">3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a>
   </li>
 </ul>
-<div class="combatants"></div>
+</div>
+<div id="right">Remaining time:
+	<span id="counter"></span> seconds
+	<ul class="combatants"></ul>
+</div>
 </div>
 </div> <!-- telo - zmena pro velikost displ-->
 </body>
