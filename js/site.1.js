@@ -43,6 +43,7 @@ if (!Array.prototype.forEach)
 
 
 var id = '';
+var qToken = '';
 
 var login = $('#login');
 var question = $('#question');
@@ -50,6 +51,7 @@ var question = $('#question');
 var header = $('#question strong');
 var answers = $('#question ul');
 var combatants = $('#question .combatants');
+var counter = $('#counter');
 
 $(document).ready(function() {
 	
@@ -67,14 +69,15 @@ $(document).ready(function() {
         var token = target.getAttribute('data-question');
         var answer = target.getAttribute('data-offset');
         $.post('/answer/'+id+'/'+token+'/'+answer, function(data) {
-            
+            data = JSON.parse(data);
+            renderCombatants(data);
         });
         e.preventDefault();
         return false;
     });
 });
 
-function render(data) {
+function renderQuestion(data) {
 	header.html(data.question);
 	var html='';
 	data.answers.forEach(function(item, offset) {
@@ -92,11 +95,36 @@ function renderCombatants(data) {
 	combatants.html(html);
 }
 
+function renderTicker(ttl) {
+    counter.html(ttl/10);
+}
+
 function getQuestion() {
 	$.post('/question/'+id, function(data) {
 		data = JSON.parse(data);
         login.hide();
-        question.show();
-		render(data);
+        
+        if (data.token != qToken) {
+            qToken = data.token;
+
+            var timeout = Math.round(data.ttl / 100);
+            renderTicker(timeout);
+            var ticker = setInterval(function() {
+                timeout = timeout-1;
+                renderTicker(timeout);
+            },'100');
+            var refresh = setTimeout(function() {
+                clearInterval(ticker);
+                getQuestion();
+            }, data.ttl);
+
+
+    		renderQuestion(data);
+            question.show();
+        } else {
+            setTimeout(function() {
+                getQuestion();
+            }, data.ttl);
+        }
 	});
 }
