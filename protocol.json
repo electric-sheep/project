@@ -21,6 +21,6 @@ POST /question/{session}
        	answers: [ "blah", "doh", "42", "haha" ],
 	ttl: 4500,
 	combatants: [
-		{ name: 'Honza', icon: 'http://img.twitter.com/9046.png', score: 12345 }
+		{ name: 'Honza', icon: 'http://img.twitter.com/9046.png', static: true/false/null, score: 12345 }
 	]
 }
